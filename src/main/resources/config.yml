@@ -22,7 +22,7 @@ rooms:
         - "GLASS"
     starting-equipment:
       starting-effects:
-        - "SPEED:2"
+        - "SPEED:2:60"
       starting-items:
         # slot in inventory
         0:
