@@ -8,11 +8,11 @@ import java.util.List;
 @Data
 public class ArenaProperties {
     
-    private boolean friendlyDamage;
-    private boolean allowDestroy;
-    private boolean dropEquipmentOnDeath;
-    private boolean dropEquipmentToInventory;
+    private final boolean friendlyDamage;
+    private final boolean allowDestroy;
+    private final boolean dropEquipmentOnDeath;
+    private final boolean dropEquipmentToInventory;
     
-    private List<Material> destroyAllowList;
+    private final List<Material> destroyAllowList;
     
 }
