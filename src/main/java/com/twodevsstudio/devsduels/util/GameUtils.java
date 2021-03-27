@@ -1,6 +1,7 @@
 package com.twodevsstudio.devsduels.util;
 
 import com.twodevsstudio.devsduels.base.Arena;
+import com.twodevsstudio.devsduels.base.Team;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -18,14 +19,33 @@ public final class GameUtils {
         if (NumberUtils.isPrime(arenaCapacity)) {
             return possibleGameModes;
         }
-        
+    
         for (int i = 2 ; i <= arenaCapacity / 2 ; i++) {
             if (arenaCapacity % i == 0) {
                 possibleGameModes.add(i);
             }
         }
-        
+    
         return possibleGameModes;
+    }
+    
+    public static List<Team> prepareTeams(Arena arena, int teamSize) {
+        
+        List<Integer> possibleTeamSizes = getPossibleTeamSizes(arena);
+        if (!possibleTeamSizes.contains(teamSize)) {
+            return prepareTeams(arena, 1);
+        }
+        
+        List<Team> teams = new ArrayList<>();
+        
+        int capacity = arena.getSpawningLocations().size();
+        int numberOfTeams = capacity / teamSize;
+        
+        for (int i = 0 ; i < numberOfTeams ; i++) {
+            teams.add(new Team(teamSize));
+        }
+        
+        return teams;
     }
     
 }
