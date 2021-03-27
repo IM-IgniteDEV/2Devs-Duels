@@ -18,9 +18,9 @@ public class Team {
     private final Set<UUID> players = new HashSet<>(size);
     
     public Team(int size) {
-        
+    
         this.size = size;
-        color = Color.fromRGB(ThreadLocalRandom.current().nextInt());
+        this.color = Color.fromRGB(ThreadLocalRandom.current().nextInt());
     }
     
     public void addPlayer(UUID uuid) {

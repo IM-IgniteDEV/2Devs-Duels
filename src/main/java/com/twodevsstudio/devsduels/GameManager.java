@@ -5,14 +5,15 @@ import com.twodevsstudio.devsduels.base.Team;
 import lombok.Data;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Data
 public class GameManager {
     
-    private final Map<Arena, Team> activeGames = new HashMap<>();
+    private final Map<Arena, List<Team>> activeGames = new HashMap<>();
     
-    public void startDuel(Arena arena, Team team) {
+    public void startDuel(Arena arena, List<Team> team) {
         
         if (isStarted(arena)) {
             return;
