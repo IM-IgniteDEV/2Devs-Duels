@@ -27,8 +27,11 @@ public class BaseConfiguration {
     
     private List<Arena> arenaList;
     
+    private String duelsCommandUsage;
+    
     public void initialize(FileConfiguration fileConfiguration) {
         
+        duelsCommandUsage = fileConfiguration.getString("messages.duels-command.usage");
         
         loadArenas(fileConfiguration);
     }

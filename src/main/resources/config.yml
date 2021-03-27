@@ -1,3 +1,6 @@
+messages:
+  duels-command-usage: ""
+
 # arenas
 arenas:
   1:
