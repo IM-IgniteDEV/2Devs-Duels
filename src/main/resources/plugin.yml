@@ -1,0 +1,5 @@
+name: 2DevsDuels
+version: ${project.version}
+main: com.twodevsstudio.devsduels.Duels
+api-version: 1.16
+authors: [ 2DevsStudio, IgniteDEV, SlighterDEV ]

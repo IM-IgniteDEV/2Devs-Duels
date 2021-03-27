@@ -1,0 +1,60 @@
+# rooms
+rooms:
+  1:
+    name: "Wild West"
+    icon:
+      ==: org.bukkit.inventory.ItemStack
+      v: 2230
+      type: DIAMOND_SWORD
+      meta:
+        ==: ItemMeta
+        meta-type: UNSPECIFIC
+        display-name: "Wild west"
+    # time in seconds
+    time-limit: 60
+    properties:
+      friendly-damage: true
+      allow-destroy: true
+      drop-equipment-on-death: true
+      drop-equipment-to-inventory: false
+      destroy-allowlist:
+        - "DIRT"
+        - "GLASS"
+    starting-equipment:
+      starting-effects:
+        - "SPEED:2"
+      starting-items:
+        # slot in inventory
+        0:
+          ==: org.bukkit.inventory.ItemStack
+          v: 2230
+          type: DIAMOND_SWORD
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: "Wild west"
+    spawning-points:
+      1:
+        world: "world"
+        x: 0
+        y: 60
+        z: 0
+        direction: NORTH
+      2:
+        world: "world"
+        x: 0
+        y: 60
+        z: 0
+        direction: SOUTH
+      3:
+        world: "world"
+        x: 0
+        y: 60
+        z: 0
+        direction: WEST
+      4:
+        world: "world"
+        x: 0
+        y: 60
+        z: 0
+        direction: EAST
