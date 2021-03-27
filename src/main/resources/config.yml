@@ -1,7 +1,9 @@
 # arenas
 arenas:
   1:
+    # name of arena
     name: "Wild West"
+    # icon of arena in gui
     icon:
       ==: org.bukkit.inventory.ItemStack
       v: 2230
@@ -13,19 +15,28 @@ arenas:
     # time in seconds
     time-limit: 60
     properties:
+      # ability to damage players from the same team
       friendly-damage: true
+      # allows to destroy block on arena, if you want to specify blocks check {destroy-allowlist}
       allow-destroy: true
+      # drop player equipment on death
       drop-equipment-on-death: true
+      # force drop death player equipment to killer inventory ( needs {drop-equipment-on-death} true )
       drop-equipment-to-inventory: false
+      # list of block to destroy, if list empty == can destroy all
       destroy-allowlist:
         - "DIRT"
         - "GLASS"
+    # starting equipment applied for each player on arena start
     starting-equipment:
+      # starting potion effects applied on arena start, in format: PotionEffectEnum, Amplifier, Duration(in sec)
       starting-effects:
         - "SPEED:2:60"
+      # items given for players
       starting-items:
         # slot in inventory
         0:
+          # itemstack
           ==: org.bukkit.inventory.ItemStack
           v: 2230
           type: DIAMOND_SWORD
@@ -33,6 +44,26 @@ arenas:
             ==: ItemMeta
             meta-type: UNSPECIFIC
             display-name: "Wild west"
+    # spawning points, every point == 1 team
+    #    NORTH
+    #    EAST
+    #    SOUTH
+    #    WEST
+    #    UP
+    #    DOWN
+    #    NORTH_EAST(NORTH, EAST),
+    #    NORTH_WEST(NORTH, WEST),
+    #    SOUTH_EAST(SOUTH, EAST),
+    #    SOUTH_WEST(SOUTH, WEST),
+    #    WEST_NORTH_WEST(WEST, NORTH_WEST),
+    #    NORTH_NORTH_WEST(NORTH, NORTH_WEST),
+    #    NORTH_NORTH_EAST(NORTH, NORTH_EAST),
+    #    EAST_NORTH_EAST(EAST, NORTH_EAST),
+    #    EAST_SOUTH_EAST(EAST, SOUTH_EAST),
+    #    SOUTH_SOUTH_EAST(SOUTH, SOUTH_EAST),
+    #    SOUTH_SOUTH_WEST(SOUTH, SOUTH_WEST),
+    #    WEST_SOUTH_WEST(WEST, SOUTH_WEST),
+    #    SELF
     spawning-points:
       1:
         world: "world"
