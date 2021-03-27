@@ -10,7 +10,7 @@ public final class Duels extends JavaPlugin {
     
     @Override
     public void onEnable() {
-    
+        
         BaseConfiguration baseConfiguration = new BaseConfiguration();
         FileConfiguration config = getConfig();
         
@@ -19,7 +19,8 @@ public final class Duels extends JavaPlugin {
         loadCommands(new PaperCommandManager(this), baseConfiguration);
     }
     
-    private void loadCommands(PaperCommandManager paperCommandManager, BaseConfiguration baseConfiguration){
+    private void loadCommands(PaperCommandManager paperCommandManager, BaseConfiguration baseConfiguration) {
+        
         paperCommandManager.registerCommand(new DuelCommand(baseConfiguration));
     }
     

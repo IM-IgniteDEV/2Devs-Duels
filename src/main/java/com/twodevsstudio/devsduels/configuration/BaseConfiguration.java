@@ -133,7 +133,7 @@ public class BaseConfiguration {
             
             spawningLocations.add(new ArenaLocation(world, x, y, z, blockFace));
         });
-    
+        
         return spawningLocations;
     }
     

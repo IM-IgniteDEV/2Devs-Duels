@@ -18,6 +18,7 @@ public class DuelCommand extends BaseCommand {
     
     @Default
     public void onHelp(Player player) {
+        
         player.sendMessage(BaseUtil.colorComponent(baseConfiguration.getDuelsCommandUsage()));
     }
     

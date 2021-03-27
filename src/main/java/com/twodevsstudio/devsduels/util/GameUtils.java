@@ -19,13 +19,13 @@ public final class GameUtils {
         if (NumberUtils.isPrime(arenaCapacity)) {
             return possibleGameModes;
         }
-    
+        
         for (int i = 2 ; i <= arenaCapacity / 2 ; i++) {
             if (arenaCapacity % i == 0) {
                 possibleGameModes.add(i);
             }
         }
-    
+        
         return possibleGameModes;
     }
     
