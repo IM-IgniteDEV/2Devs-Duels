@@ -15,7 +15,7 @@ public class Team {
     
     private final int size;
     private final Color color;
-    private final Set<UUID> players = new HashSet<>(size);
+    private final Set<DuelPlayer> players = new HashSet<>(size);
     
     public Team(int size) {
         
@@ -23,18 +23,18 @@ public class Team {
         this.color = Color.fromRGB(ThreadLocalRandom.current().nextInt());
     }
     
-    public void addPlayer(UUID uuid) {
+    public void addPlayer(DuelPlayer duelPlayer) {
         
-        players.add(uuid);
+        players.add(duelPlayer);
     }
     
-    public void removePlayer(UUID uuid) {
+    public void removePlayer(DuelPlayer duelPlayer) {
         
-        players.remove(uuid);
+        players.remove(duelPlayer);
     }
     
-    public boolean isInTeam(UUID uuid) {
+    public boolean isInTeam(DuelPlayer duelPlayer) {
         
-        return players.contains(uuid);
+        return players.contains(duelPlayer);
     }
 }
