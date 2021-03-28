@@ -28,12 +28,19 @@ public class BaseConfiguration {
     private List<Arena> arenaList;
     
     private String duelsCommandUsage;
+    private Properties properties;
     
     public void initialize(FileConfiguration fileConfiguration) {
         
         duelsCommandUsage = fileConfiguration.getString("messages.duels-command.usage");
         
         loadArenas(fileConfiguration);
+        loadProperties(fileConfiguration);
+    }
+    
+    
+    private void loadProperties(FileConfiguration configuration){
+         properties.setDeathMessages(configuration.getBoolean("properties.death-messages"));
     }
     
     

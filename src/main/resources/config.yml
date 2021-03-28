@@ -1,6 +1,10 @@
 messages:
   duels-command-usage: ""
 
+
+properties:
+  death-messages: false
+
 # arenas
 arenas:
   1:
