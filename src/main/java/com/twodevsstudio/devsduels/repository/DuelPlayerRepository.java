@@ -2,7 +2,7 @@ package com.twodevsstudio.devsduels.repository;
 
 import com.twodevsstudio.devsduels.base.DuelPlayer;
 import lombok.Getter;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 import java.util.UUID;
@@ -13,7 +13,7 @@ public class DuelPlayerRepository {
     @Getter
     private final Map<UUID, DuelPlayer> playerCache = new ConcurrentHashMap<>();
     
-    @Nullable
+    @NotNull
     public DuelPlayer findDuelPlayerByUUID(UUID uuid) {
         
         DuelPlayer duelPlayer = playerCache.get(uuid);
