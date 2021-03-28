@@ -1,5 +1,6 @@
 package com.twodevsstudio.devsduels.listeners;
 
+import com.twodevsstudio.devsduels.base.Arena;
 import com.twodevsstudio.devsduels.base.DuelPlayer;
 import com.twodevsstudio.devsduels.repository.DuelPlayerRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,13 +21,14 @@ public class BlockPlaceListener implements Listener {
         Player player = event.getPlayer();
         DuelPlayer duelPlayerByUUID = duelPlayerRepository.findDuelPlayerByUUID(player.getUniqueId());
         
-        if (duelPlayerByUUID == null) {
+        BlockState blockReplacedState = event.getBlockReplacedState();
+        Arena activeArena = duelPlayerByUUID.getActiveArena();
+        
+        if(activeArena == null){
             return;
         }
         
-        BlockState blockReplacedState = event.getBlockReplacedState();
-        
-        duelPlayerByUUID.getActiveArena().addBlock(blockReplacedState.getLocation(), blockReplacedState.getType());
+        activeArena.addBlock(blockReplacedState.getLocation(), blockReplacedState.getType());
     }
     
 }
