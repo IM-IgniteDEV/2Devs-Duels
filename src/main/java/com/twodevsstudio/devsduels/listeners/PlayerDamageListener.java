@@ -35,7 +35,7 @@ public class PlayerDamageListener implements Listener {
         
         Arena activeArena = duelPlayerDamager.getActiveArena();
         
-        if(activeArena == null){
+        if (activeArena == null) {
             return;
         }
         

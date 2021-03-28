@@ -32,7 +32,8 @@ public class GameManager {
         activeGames.remove(arena);
     }
     
-    public List<Team> getTeamsByArena(Arena arena){
+    public List<Team> getTeamsByArena(Arena arena) {
+        
         return activeGames.get(arena);
     }
     

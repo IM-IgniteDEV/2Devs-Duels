@@ -25,11 +25,13 @@ public class Arena {
     
     private final Map<Location, Material> editedBlocks = new HashMap<>();
     
-    public void addBlock(Location location, Material material){
+    public void addBlock(Location location, Material material) {
+        
         editedBlocks.putIfAbsent(location, material);
     }
     
-    public void revertBlocks(){
+    public void revertBlocks() {
+        
         editedBlocks.forEach((location, material) -> {
             World world = location.getWorld();
             

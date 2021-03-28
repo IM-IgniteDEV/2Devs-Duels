@@ -24,7 +24,7 @@ public class BlockPlaceListener implements Listener {
         BlockState blockReplacedState = event.getBlockReplacedState();
         Arena activeArena = duelPlayerByUUID.getActiveArena();
         
-        if(activeArena == null){
+        if (activeArena == null) {
             return;
         }
         

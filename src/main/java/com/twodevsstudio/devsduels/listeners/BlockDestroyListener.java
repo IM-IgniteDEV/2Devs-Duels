@@ -23,24 +23,24 @@ public class BlockDestroyListener implements Listener {
         
         Player player = event.getPlayer();
         DuelPlayer duelPlayerByUUID = duelPlayerRepository.findDuelPlayerByUUID(player.getUniqueId());
-    
+        
         Block block = event.getBlock();
         Arena activeArena = duelPlayerByUUID.getActiveArena();
         
-        if(!activeArena.getArenaProperties().isAllowDestroy()){
+        if (!activeArena.getArenaProperties().isAllowDestroy()) {
             event.setCancelled(true);
             return;
         }
-    
+        
         List<Material> destroyAllowList = activeArena.getArenaProperties().getDestroyAllowList();
-
-        if(!destroyAllowList.isEmpty()){
-            if(!destroyAllowList.contains(block.getType())){
+        
+        if (!destroyAllowList.isEmpty()) {
+            if (!destroyAllowList.contains(block.getType())) {
                 event.setCancelled(true);
                 return;
             }
         }
-    
+        
         activeArena.addBlock(block.getLocation(), block.getType());
     }
     

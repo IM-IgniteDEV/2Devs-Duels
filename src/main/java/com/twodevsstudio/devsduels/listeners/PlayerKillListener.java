@@ -21,26 +21,26 @@ public class PlayerKillListener implements Listener {
     private final DuelPlayerRepository duelPlayerRepository;
     
     @EventHandler
-    public void onPlayerKillOtherPlayer(PlayerDeathEvent event){
-    
+    public void onPlayerKillOtherPlayer(PlayerDeathEvent event) {
+        
         Player victim = event.getEntity();
         Player killer = victim.getKiller();
         
-        if(killer == null){
+        if (killer == null) {
             return;
         }
         
-        if (!baseConfiguration.getProperties().isDeathMessages()){
+        if (!baseConfiguration.getProperties().isDeathMessages()) {
             event.deathMessage(null);
         }
-    
+        
         DuelPlayer duelPlayerKiller = duelPlayerRepository.findDuelPlayerByUUID(killer.getUniqueId());
         Arena activeArena = duelPlayerKiller.getActiveArena();
         
-        if(activeArena == null){
+        if (activeArena == null) {
             return;
         }
-    
+        
         ArenaProperties arenaProperties = activeArena.getArenaProperties();
         List<ItemStack> drops = event.getDrops();
         
@@ -48,7 +48,7 @@ public class PlayerKillListener implements Listener {
             drops.clear();
         }
         
-        if(arenaProperties.isDropEquipmentOnDeath() && arenaProperties.isDropEquipmentToInventory()){
+        if (arenaProperties.isDropEquipmentOnDeath() && arenaProperties.isDropEquipmentToInventory()) {
             drops.forEach(itemStack -> killer.getInventory().addItem(itemStack));
             drops.clear();
         }
