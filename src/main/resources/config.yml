@@ -3,6 +3,7 @@ messages:
 
 
 properties:
+  # if false, it will disable death messages
   death-messages: false
   # if true, player on joining server will receive items for joining or creating duel
   give-duel-items-on-join: true
