@@ -4,13 +4,13 @@ import com.twodevsstudio.devsduels.event.DuelEndEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-public class DuelEndListener implements Listener {
+public class DuelStartListener implements Listener {
     
     @EventHandler
     public void onDuelEnd(DuelEndEvent event) {
         
-        event.getArena().revertBlocks();
-        event.getTeams().forEach(team -> team.getPlayers().forEach(duelPlayer -> duelPlayer.setActiveArena(null)));
+        event.getTeams()
+                .forEach(team -> team.getPlayers().forEach(duelPlayer -> duelPlayer.setActiveArena(event.getArena())));
     }
     
 }
