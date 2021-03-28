@@ -3,6 +3,7 @@ package com.twodevsstudio.devsduels.configuration;
 import com.twodevsstudio.devsduels.base.Arena;
 import com.twodevsstudio.devsduels.base.ArenaLocation;
 import com.twodevsstudio.devsduels.base.ArenaProperties;
+import com.twodevsstudio.devsduels.util.SlotItemStack;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang.Validate;
@@ -39,8 +40,17 @@ public class BaseConfiguration {
     }
     
     
-    private void loadProperties(FileConfiguration configuration){
-         properties.setDeathMessages(configuration.getBoolean("properties.death-messages"));
+    private void loadProperties(FileConfiguration configuration) {
+        
+        properties.setDeathMessages(configuration.getBoolean("properties.death-messages"));
+        properties.setGiveDuelItemsOnJoin(configuration.getBoolean("properties.give-duel-items-on-join"));
+        properties.setInventoryLockDuelItems(configuration.getBoolean("properties.inventory-lock-duel-items"));
+        properties.setDuelJoinItemStack(new SlotItemStack(configuration.getInt("properties.duel-join.slot"),
+                configuration.getItemStack("properties.duel-join.item")
+        ));
+        properties.setDuelCreateItemStack(new SlotItemStack(configuration.getInt("properties.duel-create.slot"),
+                configuration.getItemStack("properties.duel-create.item")
+        ));
     }
     
     

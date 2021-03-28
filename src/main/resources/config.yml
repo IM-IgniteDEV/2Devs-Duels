@@ -4,6 +4,37 @@ messages:
 
 properties:
   death-messages: false
+  # if true, player on joining server will receive items for joining or creating duel
+  give-duel-items-on-join: true
+  # if true, player won't be able to move duel items from specified slots, drop 'em or anything.
+  inventory-lock-duel-items: true
+  # item for joining duels
+  duel-join:
+    # slot on which item will be set
+    slot: 0
+    item:
+      # itemstack
+      ==: org.bukkit.inventory.ItemStack
+      v: 2230
+      type: DIAMOND_SWORD
+      meta:
+        ==: ItemMeta
+        meta-type: UNSPECIFIC
+        display-name: "Join duels item!"
+  # item for creating duel
+  duel-create:
+    # slot on which item will be set
+    slot: 8
+    item:
+      # itemstack
+      ==: org.bukkit.inventory.ItemStack
+      v: 2230
+      type: SHIELD
+      meta:
+        ==: ItemMeta
+        meta-type: UNSPECIFIC
+        display-name: "Create own duel!"
+
 
 # arenas
 arenas:

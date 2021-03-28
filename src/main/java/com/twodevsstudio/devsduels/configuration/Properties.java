@@ -1,5 +1,6 @@
 package com.twodevsstudio.devsduels.configuration;
 
+import com.twodevsstudio.devsduels.util.SlotItemStack;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,5 +9,10 @@ import lombok.Setter;
 public class Properties {
     
     private boolean deathMessages;
+    private boolean giveDuelItemsOnJoin;
+    private boolean inventoryLockDuelItems;
+    
+    private SlotItemStack duelJoinItemStack;
+    private SlotItemStack duelCreateItemStack;
     
 }
