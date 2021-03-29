@@ -3,6 +3,7 @@ package com.twodevsstudio.devsduels;
 import co.aikar.commands.PaperCommandManager;
 import com.twodevsstudio.devsduels.command.DuelCommand;
 import com.twodevsstudio.devsduels.configuration.BaseConfiguration;
+import com.twodevsstudio.devsduels.repository.DuelPlayerRepository;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -19,16 +20,21 @@ public final class Duels extends JavaPlugin {
     public void onEnable() {
         
         FileConfiguration config = getConfig();
+        DuelPlayerRepository duelPlayerRepository = new DuelPlayerRepository();
         
         baseConfiguration.initialize(config);
         
-        loadCommands(new PaperCommandManager(this), baseConfiguration);
+        loadCommands(new PaperCommandManager(this), baseConfiguration, duelPlayerRepository);
         loadListeners(Bukkit.getPluginManager());
     }
     
-    private void loadCommands(PaperCommandManager paperCommandManager, BaseConfiguration baseConfiguration) {
+    private void loadCommands(PaperCommandManager paperCommandManager,
+                              BaseConfiguration baseConfiguration,
+                              DuelPlayerRepository duelPlayerRepository
+    ) {
         
-        paperCommandManager.registerCommand(new DuelCommand(baseConfiguration));
+        paperCommandManager.registerCommand(
+                new DuelCommand(baseConfiguration, gameManager, duelPlayerRepository, this));
     }
     
     

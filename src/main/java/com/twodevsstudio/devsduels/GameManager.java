@@ -1,8 +1,10 @@
 package com.twodevsstudio.devsduels;
 
 import com.twodevsstudio.devsduels.base.Arena;
+import com.twodevsstudio.devsduels.base.DuelPlayer;
 import com.twodevsstudio.devsduels.base.Team;
 import lombok.Data;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +34,21 @@ public class GameManager {
     public void stopDuel(Arena arena) {
         
         activeGames.remove(arena);
+    }
+    
+    @Nullable
+    public Arena getArenaByPlayer(DuelPlayer duelPlayer) {
+        
+        for (Map.Entry<Arena, List<Team>> arenaListEntry : activeGames.entrySet()) {
+            List<Team> teams = arenaListEntry.getValue();
+            
+            for (Team team : teams) {
+                if (team.getPlayers().contains(duelPlayer)) {
+                    return arenaListEntry.getKey();
+                }
+            }
+        }
+        return null;
     }
     
     public List<Team> getTeamsByArena(Arena arena) {
