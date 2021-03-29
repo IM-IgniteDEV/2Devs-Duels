@@ -1,5 +1,5 @@
 messages:
-  duels-command-usage: ""
+  duels-command-usage: "/duels arenalist | /duels create <arena_name> <team_size> <max_players>"
 
 
 properties:
