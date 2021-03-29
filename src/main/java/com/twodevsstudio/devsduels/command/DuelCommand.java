@@ -55,9 +55,7 @@ public class DuelCommand extends BaseCommand {
     
         teams.get(0).addPlayer(duelPlayerRepository.findDuelPlayerByUUID(player.getUniqueId()));
     
-        gameManager.startDuel(arenaByName, teams);
-    
-
+        gameManager.startDuel(arenaByName, teams, maxPlayers);
     }
     
     @Subcommand( "arenalist" )
