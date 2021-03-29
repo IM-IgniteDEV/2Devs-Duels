@@ -49,5 +49,4 @@ public class ChooseArenaGui {
         
         guiBuilder.build().open(Bukkit.getPlayer(player.getUuid()));
     }
-    
 }

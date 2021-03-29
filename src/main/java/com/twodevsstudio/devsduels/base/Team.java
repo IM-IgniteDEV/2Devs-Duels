@@ -36,4 +36,9 @@ public class Team {
         
         return players.contains(duelPlayer);
     }
+    
+    public boolean hasCapacity() {
+        
+        return players.size() < size;
+    }
 }

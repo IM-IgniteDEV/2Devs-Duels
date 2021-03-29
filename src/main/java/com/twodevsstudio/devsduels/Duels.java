@@ -15,6 +15,7 @@ public final class Duels extends JavaPlugin {
     
     private final GameManager gameManager = new GameManager();
     private final BaseConfiguration baseConfiguration = new BaseConfiguration();
+    private DuelCommand duelCommand;
     
     @Override
     public void onEnable() {
@@ -32,9 +33,9 @@ public final class Duels extends JavaPlugin {
                               BaseConfiguration baseConfiguration,
                               DuelPlayerRepository duelPlayerRepository
     ) {
-        
-        paperCommandManager.registerCommand(
-                new DuelCommand(baseConfiguration, gameManager, duelPlayerRepository, this));
+    
+        duelCommand = new DuelCommand(baseConfiguration, gameManager, duelPlayerRepository, this);
+        paperCommandManager.registerCommand(duelCommand);
     }
     
     

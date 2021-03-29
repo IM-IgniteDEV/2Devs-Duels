@@ -21,9 +21,7 @@ public class DuelMainGui {
                         3, Item.builder()
                                 .name("&6Create Duel")
                                 .addLore("&6Click to create new Duel")
-                                .type(Material.IRON_SWORD)
-                                .build()
-                                .getItemStack())
+                                .type(Material.IRON_SWORD).build().getItemStack())
                 .element(
                         5, Item.builder()
                                 .name("&6Browse Duels")
@@ -32,9 +30,7 @@ public class DuelMainGui {
                                 .build()
                                 .getItemStack())
                 .onClick(3, duelPlayer -> new ChooseArenaGui(duels).openGui(duelPlayer))
-                .onClick(5, duelPlayer -> {
-                    //TODO Browse duels gui
-                })
+                .onClick(5, duelPlayer -> new BrowseDuelsGui(duels).openGui(duelPlayer))
                 .build()
                 .open(Bukkit.getPlayer(player.getUuid()));
     }
