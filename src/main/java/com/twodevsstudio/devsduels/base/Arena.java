@@ -25,6 +25,8 @@ public class Arena {
     
     private final Map<Location, Material> editedBlocks = new HashMap<>();
     
+    private int maxPlayers;
+    
     public void addBlock(Location location, Material material) {
         
         editedBlocks.putIfAbsent(location, material);
