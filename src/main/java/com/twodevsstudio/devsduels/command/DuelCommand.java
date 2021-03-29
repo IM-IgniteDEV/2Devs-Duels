@@ -67,13 +67,15 @@ public class DuelCommand extends BaseCommand {
         Arena arenaByName = baseConfiguration.getArenaByName(arenaName);
         
         if (arenaByName == null) {
-            // todo message
+            player.sendMessage(BaseUtil.colorComponent(baseConfiguration.getArenaDoesNotExists()));
             return;
         }
     
         DuelPlayer duelPlayer = duelPlayerRepository.findDuelPlayerByUUID(player.getUniqueId());
     
         GameUtils.addPlayerToTeam(gameManager.getTeamsByArena(arenaByName), duelPlayer);
+    
+        player.sendMessage(BaseUtil.colorComponent(baseConfiguration.getJoinedArena()));
     }
     
     @Subcommand( "join" )
@@ -83,7 +85,7 @@ public class DuelCommand extends BaseCommand {
         Player target = Bukkit.getPlayer(playerToJoin);
         
         if (target == null) {
-            // todo message
+            player.sendMessage(BaseUtil.colorComponent(baseConfiguration.getPlayerDoesNotExists()));
             return;
         }
         
@@ -92,8 +94,8 @@ public class DuelCommand extends BaseCommand {
         Arena arenaByTarget = gameManager.getArenaByPlayer(duelPlayerTarget);
         
         GameUtils.addPlayerToTeam(gameManager.getTeamsByArena(arenaByTarget), duelPlayer);
-        
-        // todo message
+    
+        player.sendMessage(BaseUtil.colorComponent(baseConfiguration.getJoinedArena()));
     }
     
     @Subcommand( "arenalist" )

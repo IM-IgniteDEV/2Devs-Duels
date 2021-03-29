@@ -1,5 +1,8 @@
 messages:
   duels-command-usage: "/duels arenalist | /duels create <arena_name> <team_size> <max_players>"
+  arena-does-not-exists: "Specified arena does not exists, if you want to check arena list use /duels arenalist"
+  player-does-not-exists: "Specified player does not exists or is offline"
+  joined-arena: "Joined arena, please wait for start"
 
 
 properties:
