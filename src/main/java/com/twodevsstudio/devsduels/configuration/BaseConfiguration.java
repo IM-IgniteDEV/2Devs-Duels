@@ -30,11 +30,18 @@ public class BaseConfiguration {
     private List<Arena> arenaList;
     
     private String duelsCommandUsage;
+    private String arenaDoesNotExists;
+    private String playerDoesNotExists;
+    private String joinedArena;
+    
     private Properties properties;
     
     public void initialize(FileConfiguration fileConfiguration) {
         
         duelsCommandUsage = fileConfiguration.getString("messages.duels-command.usage");
+        arenaDoesNotExists = fileConfiguration.getString("messages.arena-does-not-exists");
+        playerDoesNotExists = fileConfiguration.getString("messages.player-does-not-exists");
+        joinedArena = fileConfiguration.getString("messages.joined-arena");
         
         loadArenas(fileConfiguration);
         loadProperties(fileConfiguration);
