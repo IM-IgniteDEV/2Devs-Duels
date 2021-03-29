@@ -61,8 +61,24 @@ public class DuelCommand extends BaseCommand {
     }
     
     @Subcommand( "join" )
+    @Syntax( "<specify arena>" )
+    public void onJoinByArenaName(Player player, String arenaName) {
+        
+        Arena arenaByName = baseConfiguration.getArenaByName(arenaName);
+        
+        if (arenaByName == null) {
+            // todo message
+            return;
+        }
+    
+        DuelPlayer duelPlayer = duelPlayerRepository.findDuelPlayerByUUID(player.getUniqueId());
+    
+        GameUtils.addPlayerToTeam(gameManager.getTeamsByArena(arenaByName), duelPlayer);
+    }
+    
+    @Subcommand( "join" )
     @Syntax( "<specify player to join him>" )
-    public void onJoin(Player player, String playerToJoin) {
+    public void onJoinByPlayer(Player player, String playerToJoin) {
         
         Player target = Bukkit.getPlayer(playerToJoin);
         
@@ -71,10 +87,11 @@ public class DuelCommand extends BaseCommand {
             return;
         }
         
-        DuelPlayer duelPlayerByUUID = duelPlayerRepository.findDuelPlayerByUUID(target.getUniqueId());
-        Arena arenaByPlayer = gameManager.getArenaByPlayer(duelPlayerByUUID);
+        DuelPlayer duelPlayerTarget = duelPlayerRepository.findDuelPlayerByUUID(target.getUniqueId());
+        DuelPlayer duelPlayer = duelPlayerRepository.findDuelPlayerByUUID(player.getUniqueId());
+        Arena arenaByTarget = gameManager.getArenaByPlayer(duelPlayerTarget);
         
-        GameUtils.addPlayerToTeam(gameManager.getTeamsByArena(arenaByPlayer), duelPlayerByUUID);
+        GameUtils.addPlayerToTeam(gameManager.getTeamsByArena(arenaByTarget), duelPlayer);
         
         // todo message
     }
