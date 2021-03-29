@@ -1,6 +1,7 @@
 package com.twodevsstudio.devsduels.util;
 
 import com.twodevsstudio.devsduels.base.Arena;
+import com.twodevsstudio.devsduels.base.DuelPlayer;
 import com.twodevsstudio.devsduels.base.Team;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -46,6 +47,19 @@ public final class GameUtils {
         }
         
         return teams;
+    }
+    
+    public static void addPlayerToTeam(List<Team> teams, DuelPlayer duelPlayer) {
+        
+        Team lowestCountTeam = teams.get(0);
+        
+        for (Team team : teams) {
+            if (team.getPlayers().size() < lowestCountTeam.getPlayers().size()) {
+                lowestCountTeam = team;
+            }
+        }
+        
+        lowestCountTeam.addPlayer(duelPlayer);
     }
     
 }
