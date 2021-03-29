@@ -13,11 +13,13 @@ public class GameManager {
     
     private final Map<Arena, List<Team>> activeGames = new HashMap<>();
     
-    public void startDuel(Arena arena, List<Team> team) {
+    public void startDuel(Arena arena, List<Team> team, int maxPlayers) {
         
         if (isStarted(arena)) {
             return;
         }
+        
+        arena.setMaxPlayers(maxPlayers);
         
         activeGames.put(arena, team);
     }
@@ -35,6 +37,19 @@ public class GameManager {
     public List<Team> getTeamsByArena(Arena arena) {
         
         return activeGames.get(arena);
+    }
+    
+    public int getPlayersInGame(Arena arena) {
+        
+        int players = 0;
+        
+        List<Team> teams = activeGames.get(arena);
+        
+        for (Team team : teams) {
+            players = players + team.getPlayers().size();
+        }
+        
+        return players;
     }
     
 }
