@@ -16,6 +16,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -152,6 +153,17 @@ public class BaseConfiguration {
         });
         
         return spawningLocations;
+    }
+    
+    @Nullable
+    public Arena getArenaByName(String name){
+    
+        for (Arena arena : arenaList) {
+            if(arena.getName().equalsIgnoreCase(name)){
+                return arena;
+            }
+        }
+        return null;
     }
     
 }
