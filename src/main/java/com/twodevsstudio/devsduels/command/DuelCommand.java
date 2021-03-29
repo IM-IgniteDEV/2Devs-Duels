@@ -5,12 +5,14 @@ import co.aikar.commands.annotation.*;
 import com.twodevsstudio.devsduels.Duels;
 import com.twodevsstudio.devsduels.GameManager;
 import com.twodevsstudio.devsduels.base.Arena;
+import com.twodevsstudio.devsduels.base.DuelPlayer;
 import com.twodevsstudio.devsduels.base.Team;
 import com.twodevsstudio.devsduels.configuration.BaseConfiguration;
 import com.twodevsstudio.devsduels.repository.DuelPlayerRepository;
 import com.twodevsstudio.devsduels.util.BaseUtil;
 import com.twodevsstudio.devsduels.util.GameUtils;
 import lombok.RequiredArgsConstructor;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -56,6 +58,24 @@ public class DuelCommand extends BaseCommand {
         teams.get(0).addPlayer(duelPlayerRepository.findDuelPlayerByUUID(player.getUniqueId()));
     
         gameManager.startDuel(arenaByName, teams, maxPlayers);
+    }
+    
+    @Subcommand("join")
+    public void onJoin(Player player, String playerToJoin){
+    
+        Player target = Bukkit.getPlayer(playerToJoin);
+        
+        if(target == null){
+            // todo message
+            return;
+        }
+    
+        DuelPlayer duelPlayerByUUID = duelPlayerRepository.findDuelPlayerByUUID(target.getUniqueId());
+        Arena arenaByPlayer = gameManager.getArenaByPlayer(duelPlayerByUUID);
+    
+        GameUtils.addPlayerToTeam(gameManager.getTeamsByArena(arenaByPlayer), duelPlayerByUUID);
+    
+        // todo message
     }
     
     @Subcommand( "arenalist" )
